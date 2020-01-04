@@ -1,0 +1,19 @@
+version: v1.0
+name: Using promotions
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: ls
+    task:
+      jobs:
+        - name: List contents
+          commands:
+            - ls -al
+            - echo $SEMAPHORE_PIPELINE_ID
+promotions:
+  - name: Pipeline 1
+    pipeline_file: p1.yml
+  - name: Pipeline 2
+    pipeline_file: p2.yml
